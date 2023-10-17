@@ -24,10 +24,10 @@ def test_successful_login(user_login_fixture):
 
     login_page = user_login_fixture
     logging.info("Entering username and password.")
-    login_page.enter_username("qa.ajax.app.automation@gmail.com")
-    login_page.enter_password("qa_automation_password")
+    login_page.try_to_enter_username("qa.ajax.app.automation@gmail.com")
+    login_page.try_to_enter_password("qa_automation_password")
     logging.info("Clicking the login button.")
-    login_page.click_login_button()
+    login_page.click_on_login_button()
 
     assert login_page.is_user_logged_in()
     logging.info("Login successful.")
@@ -35,9 +35,9 @@ def test_successful_login(user_login_fixture):
 def test_wrong_password(user_login_fixture):
 
     login_page = user_login_fixture
-    login_page.enter_username("qa.ajax.app.automation@gmail.com")
-    login_page.enter_password("incorrect_password")
-    login_page.click_login_button()
+    login_page.try_to_enter_username("qa.ajax.app.automation@gmail.com")
+    login_page.try_to_enter_password("incorrect_password")
+    login_page.click_on_login_button()
 
 
     assert login_page.is_error_message_displayed()
@@ -48,9 +48,9 @@ def test_wrong_password(user_login_fixture):
 def test_negative_login_scenarios(user_login_fixture, username, password):
 
     login_page = user_login_fixture
-    login_page.enter_username(username)
-    login_page.enter_password(password)
-    login_page.click_login_button()
+    login_page.try_to_enter_username(username)
+    login_page.try_to_enter_password(password)
+    login_page.click_on_login_button()
 
 
     assert login_page.is_error_message_displayed()

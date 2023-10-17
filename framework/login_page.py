@@ -4,28 +4,28 @@ import urllib.request
 from bs4 import BeautifulSoup
 
 class LoginPage(Page):
-    # Локаторы элементов на странице входа
-    USERNAME_INPUT = (By.ID, 'qa.ajax.app.automation@gmail.com')
-    PASSWORD_INPUT = (By.ID, 'qa_automation_password')
+
+    USERNAME_INPUT = (By.ID, 'username_id')
+    PASSWORD_INPUT = (By.ID, 'password_id')
     LOGIN_BUTTON = (By.ID, 'login_button_id')
     SUCCESS_MESSAGE = (By.ID, 'success_message_id')
     ERROR_MESSAGE = (By.ID, 'error_message_id')
 
-    def enter_username(self, username):
+    def try_to_enter_username(self, username):
         username_element = self.find_element(*self.USERNAME_INPUT)
         username_element.clear()
         username_element.send_keys(username)
 
-    def enter_password(self, password):
+    def try_to_enter_password(self, password):
         password_element = self.find_element(*self.PASSWORD_INPUT)
         password_element.clear()
         password_element.send_keys(password)
 
-    def click_login_button(self):
+    def click_on_login_button(self):
         login_button_element = self.find_element(*self.LOGIN_BUTTON)
         login_button_element.click()
 
-    def download_ajax_systems_apk(self):
+    def ajax_systems_apk(self):
         url = "https://play.google.com/store/apps/details?id=com.ajaxsystems"
 
         with urllib.request.urlopen(url) as response:
